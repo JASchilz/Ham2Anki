@@ -32,6 +32,6 @@ The output produced by `anki-tsv` produces a tab-separated file suitable for imp
 | Answer Letter | B                                                      |
 | Answer Text   | Talk                                                   |
 
-These five columns afford the flexibility to construct multiple card types. For example, you could construct cards which display the multiple A-B-C-D choices on the front, or cards which do not display these choices.
+From these five columns of data, you could construct any of multiple card types. For example, might prefer to construct a card type which includes the multiple choices on the front of the card, or you might prefer to construct cards which do not include these multiple choices.
 
 I have included a multiple choice card type in the deck export `etc/amatuer_radio_question.apkg`. You can import the file produced by `anki-tsv` into this card type.
