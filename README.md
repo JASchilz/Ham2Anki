@@ -23,13 +23,14 @@ E1A06 (B) [97.15]	Where must the carrier frequency of a CW signal be set to comp
 ```
 
 The output produced by `anki-tsv` produces a tab-separated file suitable for import into Anki. There are five columns of data written in `out.txt`:
-| Column        | Example                                          |
-| ------------- | ------------------------------------------------ |
-| Head          | Z1A15 (T) [104.301, 208.305]                     |
-| Question      | Which of the following does a radio help you do? |
-| Choices       | (A) Cook<br>(B) Talk<br>(C) Sleep<br>(D) Bathe   |
-| Answer Letter | B                                                |
-| Answer Text   | Talk                                             |
+
+| Column        | Example                                                |
+| ------------- | ------------------------------------------------------ |
+| Head          | Z1A15 (T) [104.301, 208.305]                           |
+| Question      | Which of the following does a radio help you do?       |
+| Choices       | (A) Cook\<br\>(B) Talk\<br\>(C) Sleep\<br\>(D) Bathe   |
+| Answer Letter | B                                                      |
+| Answer Text   | Talk                                                   |
 
 These five columns afford the flexibility to construct multiple card types. For example, you could construct cards which display the multiple A-B-C-D choices on the front, or cards which do not display these choices.
 
