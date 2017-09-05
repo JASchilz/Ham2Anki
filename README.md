@@ -22,7 +22,9 @@ E1A06 (B) [97.15]	Where must the carrier frequency of a CW signal be set to comp
 ...
 ```
 
-The output produced by `anki-tsv` produces a tab-separated file suitable for import into Anki. There are five columns of data written in `out.txt`:
+You can produce a file like `questions.txt` by copying all of the text from a NCEV question pool release document into a text file and saving it to your computer.
+
+The `anki-tsv` writer produces a tab-separated file suitable for import into Anki. There are five columns of data written in `out.txt`:
 
 | Column        | Example                                                |
 | ------------- | ------------------------------------------------------ |
@@ -35,3 +37,10 @@ The output produced by `anki-tsv` produces a tab-separated file suitable for imp
 From these five columns of data, you could construct any of multiple card types. For example, might prefer to construct a card type which includes the multiple choices on the front of the card, or you might prefer to construct cards which do not include these multiple choices.
 
 I have included a multiple choice card type in the deck export `etc/amatuer_radio_question.apkg`. You can import the file produced by `anki-tsv` into this card type.
+
+This script **does not currently include images from the question pool releases**. You will need to edit your deck to include these any images after you have imported them into Anki.
+
+## Improving
+
+This project uses the strategy for flexible strategies for importing and exporting cards. You can replace or augment `ncev-txt` reader or the `anki-csv` writer with other reading and writing strategies. For example, you could create a reader which reads questions from a NCEV Microsoft Word document, or a writer which produces a `.apkg` Anki file.
+
