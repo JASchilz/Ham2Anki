@@ -42,5 +42,5 @@ This script **does not currently include images from the question pool releases*
 
 ## Improving
 
-This project uses the strategy for flexible strategies for importing and exporting cards. You can replace or augment `ncev-txt` reader or the `anki-csv` writer with other reading and writing strategies. For example, you could create a reader which reads questions from a NCEV Microsoft Word document, or a writer which produces a `.apkg` Anki file.
+This project uses the strategy pattern for flexible strategies for importing and exporting cards. You can replace or augment `ncev-txt` reader or the `anki-csv` writer with other reading and writing strategies. For example, you could create a reader which reads questions from a NCEV Microsoft Word document, or a writer which produces a `.apkg` Anki file.
 
