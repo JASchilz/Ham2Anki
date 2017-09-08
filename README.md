@@ -1,5 +1,7 @@
 # Ham2Anki
-Script to process ham radio exam questions from `http://ncvec.org` into Anki flash cards.
+Script to process ham radio exam questions from [http://ncvec.org](http://ncvec.org) into Anki flash cards.
+
+You may be able to find Anki decks produced with the help of this script at [https://ankiweb.net/shared/decks/ham%20radio](https://ankiweb.net/shared/decks/ham%20radio)
 
 ## Use
 
@@ -40,7 +42,7 @@ I have included a multiple choice card type in the deck export `etc/amatuer_radi
 
 This script **does not currently include images from the question pool releases**. You will need to edit your deck to include these any images after you have imported them into Anki.
 
-## Improving
+## Extending
 
 This project uses the strategy pattern for flexible strategies for importing and exporting cards. You can replace or augment `ncev-txt` reader or the `anki-csv` writer with other reading and writing strategies. For example, you could create a reader which reads questions from a NCEV Microsoft Word document, or a writer which produces a `.apkg` Anki file.
 
