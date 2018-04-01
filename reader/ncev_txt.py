@@ -26,25 +26,28 @@ class NCEVTxt(object):
 
         processed_questions = []
         for question in questions:
-            question_split = question.strip().split('\n')
 
-            head = question_split[0]
+            try:
+                question_split = question.strip().split('\n')
 
-            answer_key = head[head.index('(') + 1]
+                head = question_split[0]
+                answer_key = head[head.index('(') + 1]
+                question_text = question_split[1]
+                choices = {
+                        choice.split('.')[0]: '.'.join(choice.split('.')[1:])[1:]
+                        for choice in question_split[2:-1]
+                    }
 
-            question_text = question_split[1]
-            choices = {
-                    choice.split('.')[0]: '.'.join(choice.split('.')[1:])[1:]
-                    for choice in question_split[2:-1]
-                }
-
-            processed_questions.append(
-                    Question(
-                        head,
-                        question_text,
-                        choices,
-                        answer_key
+                processed_questions.append(
+                        Question(
+                            head,
+                            question_text,
+                            choices,
+                            answer_key
+                        )
                     )
-                )
+            except:
+                print("ERROR PROCESSING QUESTION:\n{}".format(question))
+
 
         return processed_questions
