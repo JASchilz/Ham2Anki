@@ -10,11 +10,11 @@ class AnkiTSV(object):
                 ])
 
             formatted_questions.append('\t'.join([
-                    question.head,
-                    question.question,
-                    choices,
-                    question.answer_key,
-                    question.choices[question.answer_key]
+                    question.head.replace('\t', ' '),
+                    question.question.replace('\t', ' '),
+                    choices.replace('\t', ' '),
+                    question.answer_key.replace('\t', ' '),
+                    question.choices[question.answer_key].replace('\t', ' '),
                 ]))
 
         return '\n'.join(formatted_questions)
