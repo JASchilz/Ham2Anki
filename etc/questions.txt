@@ -41,28 +41,28 @@ E1C13
 Modification to distractor (C): Changed FCC's to FCC 
 
 E1D09
-Modification to distractor (A) and (B): (A) Added the word ‘only’ after 70 cm. (B) added the word ‘and’ between the to 2 bands
+Modification to distractor (A) and (B): (A) Added the word ?only? after 70 cm. (B) added the word ?and? between the to 2 bands
 
 E3C08
-Modification to distractor (A): Remove the word ‘severe’, replaced with ‘An extreme’
+Modification to distractor (A): Remove the word ?severe?, replaced with ?An extreme?
 
 E4B12
-Modification to the question and all distractors: Removed the use of the slant mark (/). All changed to ‘ohms per volt’
+Modification to the question and all distractors: Removed the use of the slant mark (/). All changed to ?ohms per volt?
 
 E4B13
 Modification to question: The word parameters changed to be singular not plural
 
 E5A10
- Modification to question: Removed the word ‘defined’ replaced with ‘calculated’
+ Modification to question: Removed the word ?defined? replaced with ?calculated?
 
 E5C05
-Modification to question: Removed the words ‘and resistances’ from the question
+Modification to question: Removed the words ?and resistances? from the question
 
 E5C06
-Modification to distractor (D): Removed the word ‘inductive’, changed to ‘capacitive’
+Modification to distractor (D): Removed the word ?inductive?, changed to ?capacitive?
 
 E5D03
-Modification to distractor (D): Removed the word leads replaced with the word ‘conductors’
+Modification to distractor (D): Removed the word leads replaced with the word ?conductors?
 
 E6A03
 Typo in distractor (D): Removed comma after the word converting
@@ -71,19 +71,19 @@ E6E02
 Modification to question: Which of the following device packages is a through-hole type?
 
 E6E11
-Modification to question: Changed wording to ‘What is a characteristic of DIP packaging used for integrated circuits’
+Modification to question: Changed wording to ?What is a characteristic of DIP packaging used for integrated circuits?
 
 E6F07
 Modification to distractor (B): Changed the word semiconductor to plural, semiconductors and removed the word devices
 
 E7A12
-Modification to question: Removed the word ‘which’ between the words logic and defines
+Modification to question: Removed the word ?which? between the words logic and defines
 
 E7B09
-Modifications to question: Capitalized ‘Pi-network’
+Modifications to question: Capitalized ?Pi-network?
 
 E9A04
-Typo in distractor (C): Corrected ‘transmitter’
+Typo in distractor (C): Corrected ?transmitter?
 
 E9A06
 Modification to question: Removed hyphen in beamwidth
@@ -95,7 +95,7 @@ E9H03
 Question deleted from pool. Balance of E9H section not renumbered, leaving 10 questions
 
 E0A04
-Modification to distractor (C): Removed the word ‘exposure’ after MPE
+Modification to distractor (C): Removed the word ?exposure? after MPE
 ~~~~ End of First Errata~~~~
 
 
@@ -120,7 +120,7 @@ Modification to distractor (C): Removed the word ‘exposure’ after MPE
 
 
 
-E1 - COMMISSION’S RULES
+E1 - COMMISSION?S RULES
 	[6 Exam Questions - 6 Groups]
 E1A Operating Standards: frequency privileges; emission standards; automatic message forwarding; frequency sharing; stations aboard ships or aircraft.
 E1B Station restrictions and special operations: restrictions on station location; general operating restrictions, spurious emissions, control operator reimbursement; antenna structure restrictions; RACES operations; national quiet zone.
@@ -196,8 +196,8 @@ E9F Transmission lines: characteristics of open and shorted feed lines; 1/8 wave
 E9G The Smith chart.
 E9H Receiving Antennas: radio direction finding antennas; Beverage Antennas; specialized receiving antennas; longwire receiving antennas.
 
-E0 – SAFETY
-	[1 exam question -– 1 group]
+E0 ? SAFETY
+	[1 exam question -? 1 group]
 E0A Safety: amateur radio safety practices; RF radiation hazards; hazardous materials; grounding and bonding.
 
 
@@ -252,7 +252,7 @@ July 1, 2016 thru June 30, 2020
 
 
 
-SUBELEMENT E1 - COMMISSION’S RULES [6 Exam Questions - 6 Groups]
+SUBELEMENT E1 - COMMISSION?S RULES [6 Exam Questions - 6 Groups]
 
 
 E1A Operating Standards: frequency privileges; emission standards; automatic message forwarding; frequency sharing; stations aboard ships or aircraft
@@ -302,7 +302,7 @@ Where must the carrier frequency of a CW signal be set to comply with FCC rules 
 A. At the lowest frequency of the channel
 B. At the center frequency of the channel
 C. At the highest frequency of the channel
-D. On any frequency where the signal’s sidebands are within the channel
+D. On any frequency where the signal?s sidebands are within the channel
 ~~
 
 E1A07 (D) [97.303]
@@ -325,7 +325,7 @@ E1A09 (A) [97.219]
 What is the first action you should take if your digital message forwarding station inadvertently forwards a communication that violates FCC rules?
 A. Discontinue forwarding the communication as soon as you become aware of it
 B. Notify the originating station that the communication does not comply with FCC rules
-C. Notify the nearest FCC Field Engineer’s office
+C. Notify the nearest FCC Field Engineer?s office
 D. Discontinue forwarding all messages
 ~~
 
@@ -475,7 +475,7 @@ E1C02 (A) [97.3, 97.109]
 What is meant by automatic control of a station?
 A. The use of devices and procedures for control so that the control operator does not have to be present at a control point
 B. A station operating with its output power controlled automatically
-C. Remotely controlling a station’s antenna pattern through a directional control link
+C. Remotely controlling a station?s antenna pattern through a directional control link
 D. The use of a control link between a control point and a locally controlled station
 ~~
 
@@ -520,7 +520,7 @@ D. Controlling a repeater using a portable handheld transceiver
 ~~
 
 E1C08 (B) [97.213]
-What is the maximum permissible duration of a remotely controlled station’s transmissions if its control link malfunctions?
+What is the maximum permissible duration of a remotely controlled station?s transmissions if its control link malfunctions?
 A. 30 seconds
 B. 3 minutes
 C. 5 minutes
@@ -588,9 +588,9 @@ D. A radio communications service using stations on Earth satellites for public 
 
 E1D03 (B) [97.3]
 What is a telecommand station in the amateur satellite service?
-A. An amateur station located on the Earth’s surface for communication with other Earth stations by means of Earth satellites
+A. An amateur station located on the Earth?s surface for communication with other Earth stations by means of Earth satellites
 B. An amateur station that transmits communications to initiate, modify or terminate functions of a space station
-C. An amateur station located more than 50 km above the Earth’s surface
+C. An amateur station located more than 50 km above the Earth?s surface
 D. An amateur station that transmits telemetry consisting of measurements of upper atmosphere
 ~~
 
@@ -710,11 +710,11 @@ D. The VE session manager
 ~~
 
 E1E07 (B) [97.509]
-What should a VE do if a candidate fails to comply with the examiner’s instructions during an amateur operator license examination?
+What should a VE do if a candidate fails to comply with the examiner?s instructions during an amateur operator license examination?
 A. Warn the candidate that continued failure to comply will result in termination of the examination
-B. Immediately terminate the candidate’s examination
+B. Immediately terminate the candidate?s examination
 C. Allow the candidate to complete the examination, but invalidate the results
-D. Immediately terminate everyone’s examination and close the session
+D. Immediately terminate everyone?s examination and close the session
 ~~
 
 E1E08 (C) [97.509]
@@ -798,7 +798,7 @@ Under what circumstances may a dealer sell an external RF power amplifier capabl
 A. It was purchased in used condition from an amateur operator and is sold to another amateur operator for use at that operator's station
 B. The equipment dealer assembled it from a kit
 C. It was imported from a manufacturer in a country that does not require certification of RF power amplifiers
-D. It was imported from a manufacturer in another country and was certificated by that country’s government
+D. It was imported from a manufacturer in another country and was certificated by that country?s government
 ~~
 
 E1F04 (A) [97.3]
@@ -1159,10 +1159,10 @@ D. Every contest requires a signal report in the exchange
 
 E2C02 (A)
 Which of the following best describes the term self-spotting in regards to HF contest operating?
-A. The generally prohibited practice of posting one’s own call sign and frequency on a spotting network
+A. The generally prohibited practice of posting one?s own call sign and frequency on a spotting network
 B. The acceptable practice of manually posting the call signs of stations on a spotting network
-C. A manual technique for rapidly zero beating or tuning to a station’s frequency before calling that station
-D. An automatic method for rapidly zero beating or tuning to a station’s frequency before calling that station
+C. A manual technique for rapidly zero beating or tuning to a station?s frequency before calling that station
+D. An automatic method for rapidly zero beating or tuning to a station?s frequency before calling that station
 ~~
 
 E2C03 (A)
@@ -1572,7 +1572,7 @@ E3A12 (C)
 What is the cause of auroral activity?
 A. The interaction in the F2 layer between the solar wind and the Van Allen belt
 B. A low sunspot level combined with tropospheric ducting
-C. The interaction in the E layer of charged particles from the Sun with the Earth’s magnetic field
+C. The interaction in the E layer of charged particles from the Sun with the Earth?s magnetic field
 D. Meteor showers concentrated in the extreme northern and southern latitudes
 ~~
 
@@ -1925,7 +1925,7 @@ D. An antenna analyzer
 ~~
 
 E4A09 (B)
-When using a computer’s soundcard input to digitize signals, what is the highest frequency signal that can be digitized without aliasing?
+When using a computer?s soundcard input to digitize signals, what is the highest frequency signal that can be digitized without aliasing?
 A. The same as the sample rate
 B. One-half the sample rate
 C. One-tenth the sample rate
@@ -2124,7 +2124,7 @@ E4C Receiver performance characteristics, phase noise, noise floor, image reject
 
 E4C01 (D)
 What is an effect of excessive phase noise in the local oscillator section of a receiver?
-A. It limits the receiver’s ability to receive strong signals
+A. It limits the receiver?s ability to receive strong signals
 B. It reduces receiver sensitivity
 C. It decreases receiver third-order intermodulation distortion dynamic range
 D. It can cause strong signals on nearby frequencies to interfere with reception of weak signals
@@ -2243,7 +2243,7 @@ D. Atmospheric noise
 ~~
 
 E4C16 (A)
-Which of the following is caused by missing codes in an SDR receiver’s analog-to-digital converter?
+Which of the following is caused by missing codes in an SDR receiver?s analog-to-digital converter?
 A. Distortion
 B. Overload
 C. Loss of sensitivity
@@ -2251,7 +2251,7 @@ D. Excess output level
 ~~
 
 E4C17 (D)
-Which of the following has the largest effect on an SDR receiver’s linearity?
+Which of the following has the largest effect on an SDR receiver?s linearity?
 A. CPU register width in bits
 B. Anti-aliasing input filter bandwidth
 C. RAM speed used for data storage
@@ -2410,7 +2410,7 @@ D. By connecting the radio's power leads directly to the battery and by installi
 
 E4E05 (B)
 How can noise from an electric motor be suppressed?
-A. By installing a high pass filter in series with the motor’s power leads
+A. By installing a high pass filter in series with the motor?s power leads
 B. By installing a brute-force AC-line filter in series with the motor leads
 C. By installing a bypass capacitor in series with the motor leads
 D. By using a ground-fault current interrupter in the circuit used to power the motor
@@ -2758,7 +2758,7 @@ E5C Coordinate systems and phasors in electronics: Rectangular Coordinates; Pola
 
 E5C01 (A)
 Which of the following represents a capacitive reactance in rectangular notation?
-A. –jX
+A. ?jX
 B. +jX
 C. X
 D. Omega
@@ -2797,7 +2797,7 @@ D. Far field diagram
 ~~
 
 E5C06 (B)
-What does the impedance 50–j25 represent?
+What does the impedance 50?j25 represent?
 A. 50 ohms resistance in series with 25 ohms inductive reactance
 B. 50 ohms resistance in series with 25 ohms capacitive reactance
 C. 25 ohms resistance in series with 50 ohms inductive reactance
@@ -3300,7 +3300,7 @@ D. To increase the sensitivity
 ~~
 
 E6C02 (B)
-What happens when the level of a comparator’s input signal crosses the threshold?
+What happens when the level of a comparator?s input signal crosses the threshold?
 A. The IC input can be damaged
 B. The comparator changes its output state
 C. The comparator enters latch-up
@@ -3497,8 +3497,8 @@ D. 229 turns
 E6D12 (C)
 What is the definition of saturation in a ferrite core inductor?
 A. The inductor windings are over coupled
-B. The inductor’s voltage rating is exceeded causing a flashover
-C. The ability of the inductor’s core to store magnetic energy has been exceeded
+B. The inductor?s voltage rating is exceeded causing a flashover
+C. The ability of the inductor?s core to store magnetic energy has been exceeded
 D. Adjacent inductors become over-coupled
 ~~
 
@@ -3725,10 +3725,10 @@ D. Copper oxide
 ~~
 
 E6F11 (B)
-What is the approximate open-circuit voltage produced by a fully-illuminated silicon photovoltaic cell?
+What is the approximate open-circuit voltage produced by a fully-illuminated silicon?photovoltaic cell?
 A. 0.1 V
 B. 0.5 V
-C. 1.5 V
+C. 1.5?V
 D. 12 V
 ~~
 
@@ -4143,7 +4143,7 @@ E7D02 (C)
 What is one characteristic of a switching electronic voltage regulator?
 A. The resistance of a control element is varied in direct proportion to the line voltage or load current
 B. It is generally less efficient than a linear regulator
-C. The controlled device’s duty cycle is changed to produce a constant average output voltage
+C. The controlled device?s duty cycle is changed to produce a constant average output voltage
 D. It gives a ramp voltage at its output
 ~~
 
@@ -4648,9 +4648,9 @@ D. Negative feedback and balanced feedback
 ~~
 
 E7H07 (D)
-How can an oscillator’s microphonic responses be reduced?
+How can an oscillator?s microphonic responses be reduced?
 A. Use of NP0 capacitors
-B. Eliminating noise on the oscillator’s power supply
+B. Eliminating noise on the oscillator?s power supply
 C. Using the oscillator only for CW and digital signals
 D. Mechanically isolating the oscillator circuitry from its enclosure
 ~~
@@ -5463,7 +5463,7 @@ What is a G5RV antenna?
 A. A multi-band dipole antenna fed with coax and a balun through a selected length of open wire transmission line
 B. A multi-band trap antenna
 C. A phased array antenna consisting of multiple loops
-D. A wide band dipole using shorted coaxial cable for the radiating elements and fed with a 4:1 balun
+D. A wide band dipole using shorted coaxial cable for the radiating elements and fed with a?4:1 balun
 ~~
 
 E9C10 (B)
@@ -6036,7 +6036,7 @@ D. High-radiation angle
 ~~
 
 
-SUBELEMENT E0 – SAFETY - [1 exam question -– 1 group]
+SUBELEMENT E0 ? SAFETY - [1 exam question -? 1 group]
 
 
 E0A Safety: amateur radio safety practices; RF radiation hazards; hazardous materials; grounding 
@@ -6050,7 +6050,7 @@ D. Reduce RFI to telephones and home entertainment systems
 ~~
 
 E0A02 (B)
-When evaluating RF exposure levels from your station at a neighbor’s home, what must you do?
+When evaluating RF exposure levels from your station at a neighbor?s home, what must you do?
 A. Make sure signals from your station are less than the controlled MPE limits
 B. Make sure signals from your station are less than the uncontrolled MPE limits
 C. You need only evaluate exposure levels on your own property
