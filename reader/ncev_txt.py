@@ -3,30 +3,28 @@ from question import Question
 
 class NCEVTxt(object):
 
-    def extract_questions(self, path):
+    @staticmethod
+    def is_a_question(s):
+        return s.strip().split('\n')[-1] == '~~'
 
-        is_a_question = lambda s: s.strip().split('\n')[-1] == '~~'
+    @classmethod
+    def extract_questions(cls, path):
 
         with open(path, 'r') as data_file:
             questions = data_file.read().split('\n\n')
 
-
         possible_but_rejected = list(
                 filter(
-                    lambda s: len(s.strip().split('\n')) > 4 and not is_a_question(s),
+                    lambda s: len(s.strip().split('\n')) > 4 and not cls.is_a_question(s),
                     questions
                 )
             )
 
-        if possible_but_rejected:
-            print("POSSIBLE QUESTIONS REJECTED:")
-            print('\n\n'.join(possible_but_rejected))
-
-        questions = list(filter(is_a_question, questions))
+        questions = list(filter(cls.is_a_question, questions))
 
         processed_questions = []
+        error_questions = []
         for question in questions:
-
             try:
                 question_split = question.strip().split('\n')
 
@@ -47,7 +45,6 @@ class NCEVTxt(object):
                         )
                     )
             except:
-                print("ERROR PROCESSING QUESTION:\n{}".format(question))
+                error_questions.append(question)
 
-
-        return processed_questions
+        return processed_questions, possible_but_rejected, error_questions
