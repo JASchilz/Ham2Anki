@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/JASchilz/Ham2Anki.svg?branch=master)](https://travis-ci.com/JASchilz/Ham2Anki)
+[![Maintainability](https://api.codeclimate.com/v1/badges/17923d3985b4809caaf4/maintainability)](https://codeclimate.com/github/JASchilz/Ham2Anki/maintainability)
 
 # Ham2Anki
 Script to process ham radio exam questions from [http://ncvec.org](http://ncvec.org) into Anki flash cards.
