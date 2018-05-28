@@ -7,6 +7,25 @@ class NCEVTxt(object):
     def is_a_question(s):
         return s.strip().split('\n')[-1] == '~~'
 
+    @staticmethod
+    def process_question_text(question_text):
+        question_split = question_text.strip().split('\n')
+
+        head = question_split[0]
+        answer_key = head[head.index('(') + 1]
+        question_text = question_split[1]
+        choices = {
+            choice.split('.')[0]: '.'.join(choice.split('.')[1:])[1:]
+                for choice in question_split[2:-1]
+            }
+
+        return Question(
+                head,
+                question_text,
+                choices,
+                answer_key
+            )
+
     @classmethod
     def extract_questions(cls, path):
 
@@ -20,31 +39,14 @@ class NCEVTxt(object):
                 )
             )
 
-        questions = list(filter(cls.is_a_question, questions))
+        question_texts = list(filter(cls.is_a_question, questions))
 
         processed_questions = []
         error_questions = []
-        for question in questions:
+        for question_text in question_texts:
             try:
-                question_split = question.strip().split('\n')
-
-                head = question_split[0]
-                answer_key = head[head.index('(') + 1]
-                question_text = question_split[1]
-                choices = {
-                        choice.split('.')[0]: '.'.join(choice.split('.')[1:])[1:]
-                        for choice in question_split[2:-1]
-                    }
-
-                processed_questions.append(
-                        Question(
-                            head,
-                            question_text,
-                            choices,
-                            answer_key
-                        )
-                    )
+                processed_questions.append(cls.process_question_text(question_text))
             except:
-                error_questions.append(question)
+                error_questions.append(question_text)
 
         return processed_questions, possible_but_rejected, error_questions
