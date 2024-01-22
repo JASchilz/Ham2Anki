@@ -42,5 +42,17 @@ if error_questions:
     for question in error_questions:
         print(question + "\n")
 
+section_count = {}
+for question in questions:
+    section = question.head[0:2]
+    try:
+        section_count[section] += 1
+    except KeyError:
+        section_count[section] = 1
+
+print("\nFOUND THE FOLLOWING NUMBER OF QUESTIONS PER SECTION:")
+print(section_count)
+
+
 writers[args.writer]().write_questions(questions, vars(args)["out"])
 
