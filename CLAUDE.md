@@ -32,12 +32,16 @@ together and prints a per-subelement question count.
 - `writer/anki_tsv.py` (`anki-tsv`) — legacy tab-separated output for manual
   import into a card type.
 - `writer/anki_apkg.py` (`anki-apkg`) — builds a finished `.apkg` via `genanki`.
-  It reproduces the user's existing **"Amateur Radio Pool Question"** note type
-  (model id `1433221774348`, fields `head/question/choices/answer_letter/
-  answer_text`), so imported cards join that card type and update in place. That
-  note type has no image field, so referenced figures are folded into the
-  `question` field, between the question text and the choices. Notes are keyed on
-  the question number (e.g. `T1A01`) so re-imports update rather than duplicate.
+  It **reads the note type at build time** from a sample package
+  (`etc/amateur_radio_question.apkg` by default; override with `--template-apkg`)
+  via `load_model`, reusing that model's id, fields, templates, and CSS. So the
+  deck always matches the "Amateur Radio Pool Question" card type in that
+  package — imported cards join it and update in place, with no id to keep in
+  sync in code. Field values are mapped by field *name*, so field reordering is
+  safe. That note type has no image field, so referenced figures are folded into
+  the `question` field, between the question text and the choices. Notes are
+  keyed on the question number (e.g. `T1A01`) so re-imports update rather than
+  duplicate.
 
 ### Readers/writers contract
 

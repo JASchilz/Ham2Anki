@@ -37,10 +37,12 @@ Have the user drop the `.docx` and images into a working directory
 `question/<year>-<class>/` (e.g. `question/2026-technician/`). This path is
 gitignored.
 
-Also confirm the target **card type**. The default reproduces the user's existing
-"Amateur Radio Pool Question" note type (so imported cards merge and update in
-place). If they want a different look, get their note type first (export a deck
-using it as `.apkg`, then extract its model — see `writer/anki_apkg.py`).
+Also confirm the target **card type**. The writer reads the note type at build
+time from a sample package (`etc/amateur_radio_question.apkg` by default), so
+imported cards merge into the "Amateur Radio Pool Question" type and update in
+place. To use a different card type, have the user export a deck that uses it as
+`.apkg` and pass it with `--template-apkg <file>`; the writer will reuse that
+model's id, fields, templates, and CSS automatically.
 
 ## Step 2 — Pre-processing (Claude does this)
 

@@ -43,6 +43,13 @@ parser.add_argument(
     help="Name of the deck to produce (anki-apkg writer only).",
     default="Ham Radio Question Pool",
 )
+parser.add_argument(
+    "-t",
+    "--template-apkg",
+    help="Sample .apkg supplying the Anki note type to reuse "
+         "(anki-apkg writer only). Defaults to etc/amateur_radio_question.apkg.",
+    default=None,
+)
 args = parser.parse_args()
 
 questions, possible_but_rejected, error_questions = readers[args.reader]().extract_questions(vars(args)["in"])
@@ -71,7 +78,10 @@ print(section_count)
 
 writer_class = writers[args.writer]
 if args.writer == 'anki-apkg':
-    writer_instance = writer_class(deck_name=args.deck_name)
+    apkg_kwargs = {'deck_name': args.deck_name}
+    if args.template_apkg:
+        apkg_kwargs['template_apkg'] = args.template_apkg
+    writer_instance = writer_class(**apkg_kwargs)
 else:
     writer_instance = writer_class()
 

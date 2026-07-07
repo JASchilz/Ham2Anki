@@ -4,10 +4,21 @@ import unittest
 
 from question import Question
 from writer import AnkiAPKG
-from writer.anki_apkg import _normalize_figure_key
+from writer.anki_apkg import _normalize_figure_key, load_model
 
 
 class TestAnkiAPKGWriter(unittest.TestCase):
+
+    def test_model_is_read_from_sample_package(self):
+        """The note type is derived from etc/amateur_radio_question.apkg."""
+        model = load_model()
+        field_names = [field['name'] for field in model.fields]
+
+        self.assertEqual(1433221774348, model.model_id)
+        self.assertEqual('Amateur Radio Pool Question', model.name)
+        self.assertEqual(
+            ['head', 'question', 'choices', 'answer_letter', 'answer_text'],
+            field_names)
 
     def test_normalize_figure_key(self):
         """Figure labels and file stems reduce to the same comparable key."""

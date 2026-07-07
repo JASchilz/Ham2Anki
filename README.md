@@ -57,10 +57,11 @@ I have included a multiple choice card type in the deck export `etc/amatuer_radi
 
 The `anki-apkg` writer produces a finished `.apkg` deck directly, with the
 question-pool figures embedded and automatically attached to the cards that
-reference them — no manual image work in Anki required. It uses the same
-"Amateur Radio Pool Question" note type as `etc/amateur_radio_question.apkg`
-(matched by note-type ID), so imported cards join that card type and update in
-place rather than creating a duplicate. Because that note type has no dedicated
+reference them — no manual image work in Anki required. It reads the note type at
+build time from a sample package (`etc/amateur_radio_question.apkg` by default,
+or `--template-apkg <file>`), reusing that card type's id, fields, templates, and
+CSS. So imported cards join the "Amateur Radio Pool Question" card type and update
+in place rather than creating a duplicate. Because that note type has no dedicated
 image field, referenced figures are placed in the question field, between the
 question text and the choices.
 

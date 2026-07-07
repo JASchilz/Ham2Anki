@@ -1,18 +1,23 @@
+import json
 import os
 import re
+import sqlite3
+import tempfile
+import zipfile
 from html import escape
 
 import genanki
 
 
-# This is the model (note type) ID of the user's existing "Amateur Radio Pool
-# Question" card type, extracted from etc/amateur_radio_question.apkg. Reusing
-# the same ID, field list, and templates means an imported deck attaches to that
-# existing note type and updates in place rather than creating a duplicate.
-MODEL_ID = 1433221774348
-
 # Arbitrary but stable deck ID. Generated with random.randrange(1 << 30, 1 << 31).
 DECK_ID = 2059400110
+
+# The card type is not hardcoded: it is read at build time from this sample
+# package, so the produced deck always matches whatever "Amateur Radio Pool
+# Question" note type lives there (same model id, fields, templates, and CSS).
+# Resolved relative to this file so it works regardless of the caller's cwd.
+DEFAULT_TEMPLATE_APKG = os.path.join(
+    os.path.dirname(__file__), os.pardir, 'etc', 'amateur_radio_question.apkg')
 
 # Image file extensions we will treat as figures when scanning a figures directory.
 IMAGE_EXTENSIONS = ('.png', '.jpg', '.jpeg', '.gif', '.bmp', '.svg')
@@ -20,32 +25,49 @@ IMAGE_EXTENSIONS = ('.png', '.jpg', '.jpeg', '.gif', '.bmp', '.svg')
 # Matches references like "figure T-1", "Figure T1", "in Figure E5-2", etc.
 FIGURE_REFERENCE = re.compile(r'Figure\s+([A-Za-z]+-?\d+(?:-\d+)?)', re.IGNORECASE)
 
-# Faithful reproduction of the user's existing note type so that the produced
-# deck renders identically and merges with their collection on import.
-MODEL = genanki.Model(
-    MODEL_ID,
-    'Amateur Radio Pool Question',
-    fields=[
-        {'name': 'head'},
-        {'name': 'question'},
-        {'name': 'choices'},
-        {'name': 'answer_letter'},
-        {'name': 'answer_text'},
-    ],
-    templates=[
-        {
-            'name': 'Card 1',
-            'qfmt': '{{question}}\n<br>\n{{choices}}\n<hr id=answer>',
-            'afmt': '{{FrontSide}}\n\n\n\n({{answer_letter}}) {{answer_text}}',
-        },
-    ],
-    css=(
-        '.card {\n font-family: arial;\n font-size: 20px;\n text-align: left;\n'
-        ' color: black;\n background-color: white;\n}\n\n'
-        '.code {\n\tfont-family: "Courier New", Courier, monospace;\n'
-        '       text-align:left;\n}\n'
-    ),
-)
+
+def load_model(template_apkg=DEFAULT_TEMPLATE_APKG):
+    """Build a genanki Model from the note type stored in an .apkg.
+
+    Reusing the sample package's model id, fields, templates, and CSS means an
+    imported deck attaches to that existing note type and updates in place
+    rather than creating a duplicate.
+    """
+    if not os.path.exists(template_apkg):
+        raise FileNotFoundError(
+            'Template package not found: {}. It supplies the Anki note type.'
+            .format(template_apkg))
+
+    with zipfile.ZipFile(template_apkg) as archive:
+        collection_bytes = archive.read('collection.anki2')
+
+    collection_path = os.path.join(tempfile.mkdtemp(), 'collection.anki2')
+    with open(collection_path, 'wb') as handle:
+        handle.write(collection_bytes)
+
+    connection = sqlite3.connect(collection_path)
+    try:
+        models = json.loads(connection.execute('select models from col').fetchone()[0])
+    finally:
+        connection.close()
+
+    # Prefer a model that looks like the question note type; fall back to the
+    # first one defined.
+    model_id, model = next(
+        ((mid, m) for mid, m in models.items()
+         if {'question', 'answer_letter'} <= {f['name'] for f in m['flds']}),
+        next(iter(models.items())),
+    )
+
+    return genanki.Model(
+        int(model_id),
+        model['name'],
+        fields=[{'name': f['name']}
+                for f in sorted(model['flds'], key=lambda f: f['ord'])],
+        templates=[{'name': t['name'], 'qfmt': t['qfmt'], 'afmt': t['afmt']}
+                   for t in sorted(model['tmpls'], key=lambda t: t['ord'])],
+        css=model.get('css', ''),
+    )
 
 
 def _normalize_figure_key(label):
@@ -63,8 +85,10 @@ def _normalize_figure_key(label):
 
 class AnkiAPKG(object):
 
-    def __init__(self, deck_name='Ham Radio Question Pool'):
+    def __init__(self, deck_name='Ham Radio Question Pool',
+                 template_apkg=DEFAULT_TEMPLATE_APKG):
         self.deck_name = deck_name
+        self.model = load_model(template_apkg)
 
     @staticmethod
     def _discover_figures(figures_dir):
@@ -112,21 +136,28 @@ class AnkiAPKG(object):
 
         deck = genanki.Deck(DECK_ID, self.deck_name)
 
+        field_names = [field['name'] for field in self.model.fields]
+
         for question in questions:
             choices_html = '<br>'.join(
                 '({}) {}'.format(escape(key), escape(question.choices[key]))
                 for key in sorted(question.choices.keys())
             )
 
+            # Map values by field name so we stay correct even if the note
+            # type's field order changes. Figures fold into the question field
+            # (the note type has no dedicated image field).
+            values = {
+                'head': escape(question.head),
+                'question': self._question_html(question, available_figures, used_media),
+                'choices': choices_html,
+                'answer_letter': escape(question.answer_key),
+                'answer_text': escape(question.choices.get(question.answer_key, '')),
+            }
+
             note = genanki.Note(
-                model=MODEL,
-                fields=[
-                    escape(question.head),
-                    self._question_html(question, available_figures, used_media),
-                    choices_html,
-                    escape(question.answer_key),
-                    escape(question.choices.get(question.answer_key, '')),
-                ],
+                model=self.model,
+                fields=[values.get(name, '') for name in field_names],
                 # Key on the question number (e.g. "T1A01") so that pool
                 # revisions to citations or wording update the existing card
                 # rather than creating a duplicate.
