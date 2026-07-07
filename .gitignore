@@ -92,3 +92,8 @@ ENV/
 
 .idea/
 
+# Question pool working data and generated decks (see CLAUDE.md / the
+# export-ham-deck skill). Source pools, figures, and .apkg outputs live under
+# question/<year>-<class>/ and are not version-controlled.
+/question/*/
+

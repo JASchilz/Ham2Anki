@@ -9,7 +9,12 @@ You may be able to find Anki decks produced with the help of this script at [htt
 
 ## Use
 
-See `python main.py --help`.
+Install the dependencies first:
+```
+$ pip install -r requirements.txt
+```
+
+Then see `python main.py --help`.
 
 For example:
 ```
@@ -28,7 +33,11 @@ E1A06 (B) [97.15]	Where must the carrier frequency of a CW signal be set to comp
 ...
 ```
 
-You can produce a file like `questions.txt` by copying all of the text from a NCEV question pool release document into a text file and saving it to your computer.
+You can produce a file like `questions.txt` by copying all of the text from a NCEV question pool release document into a text file and saving it to your computer. Alternatively, the `ncev-docx` reader reads the questions directly from the NCVEC Word (`.docx`) release, so no manual text extraction is needed:
+
+```
+$ python main.py pool.docx out.apkg -r ncev-docx -w anki-apkg
+```
 
 The `anki-tsv` writer produces a tab-separated file suitable for import into Anki. There are five columns of data written in `out.txt`:
 
@@ -44,7 +53,56 @@ From these five columns of data, you could construct any of multiple card types.
 
 I have included a multiple choice card type in the deck export `etc/amatuer_radio_question.apkg`. You can import the file produced by `anki-tsv` into this card type.
 
-This script **does not currently include images from the question pool releases**. You will need to edit your deck to include these any images after you have imported them into Anki.
+### Producing a ready-to-import deck with figures (`anki-apkg`)
+
+The `anki-apkg` writer produces a finished `.apkg` deck directly, with the
+question-pool figures embedded and automatically attached to the cards that
+reference them — no manual image work in Anki required. It uses the same
+"Amateur Radio Pool Question" note type as `etc/amateur_radio_question.apkg`
+(matched by note-type ID), so imported cards join that card type and update in
+place rather than creating a duplicate. Because that note type has no dedicated
+image field, referenced figures are placed in the question field, between the
+question text and the choices.
+
+```
+$ python main.py questions.txt technician.apkg \
+    -r ncev-txt -w anki-apkg \
+    -f figures/ -d "Technician 2026-2030"
+```
+
+* `-f/--figures-dir` points at a directory of figure images. Name each file
+  after its figure label as it appears in the pool, e.g. `T-1.png`, `T-2.png`,
+  `T-3.png` (a leading `figure_` and any case/spacing differences are ignored,
+  so `figure_t-1.png` also works). Supported extensions: `.png`, `.jpg`,
+  `.jpeg`, `.gif`, `.bmp`, `.svg`.
+* `-d/--deck-name` sets the deck name shown in Anki.
+
+The NCVEC diagram exports ship with large blank borders. `scripts/crop_figures.py`
+auto-trims each image to its content (plus a small margin) and can rename them to
+the figure labels the writer expects:
+
+```
+$ python scripts/crop_figures.py "Diagram T1.jpg" "Diagram T2.jpg" "Diagram T3.jpg" \
+    --out-dir figures --names T-1,T-2,T-3
+```
+
+Putting it together, a Technician deck can be built in two commands — crop the
+figures, then read the `.docx` and write the deck:
+
+```
+$ python scripts/crop_figures.py Diagram*.jpg --out-dir figures --names T-1,T-2,T-3
+$ python main.py pool.docx technician.apkg \
+    -r ncev-docx -w anki-apkg -f figures -d "Technician 2026-2030"
+```
+
+For each question, the writer scans the question and its choices for references
+like "Figure T-1" and injects the matching image into the card. Questions that
+reference no figure, or a figure not present in the figures directory, are
+written as plain text cards. Re-importing a regenerated deck updates existing
+cards (notes are keyed on the question number) rather than duplicating them.
+
+The `.apkg` deck is self-contained, so you can quality-check it by importing it
+into Anki directly.
 
 ## Extending
 

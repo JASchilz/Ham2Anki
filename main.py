@@ -5,10 +5,12 @@ import writer
 
 readers = {
     'ncev-txt': reader.NCEVTxt,
+    'ncev-docx': reader.NCEVDocx,
 }
 
 writers = {
     'anki-tsv': writer.AnkiTSV,
+    'anki-apkg': writer.AnkiAPKG,
 }
 
 parser = argparse.ArgumentParser(description="Parse a Ham radio question pool file into flash cards.")
@@ -27,6 +29,19 @@ parser.add_argument(
     help="The desired format of the output file.",
     required=True,
     choices=writers.keys()
+)
+parser.add_argument(
+    "-f",
+    "--figures-dir",
+    help="Directory of figure images to embed (anki-apkg writer only). "
+         "Name each file after its figure label, e.g. 'T-1.png'.",
+    default=None,
+)
+parser.add_argument(
+    "-d",
+    "--deck-name",
+    help="Name of the deck to produce (anki-apkg writer only).",
+    default="Ham Radio Question Pool",
 )
 args = parser.parse_args()
 
@@ -54,5 +69,11 @@ print("\nFOUND THE FOLLOWING NUMBER OF QUESTIONS PER SECTION:")
 print(section_count)
 
 
-writers[args.writer]().write_questions(questions, vars(args)["out"])
+writer_class = writers[args.writer]
+if args.writer == 'anki-apkg':
+    writer_instance = writer_class(deck_name=args.deck_name)
+else:
+    writer_instance = writer_class()
+
+writer_instance.write_questions(questions, vars(args)["out"], figures_dir=args.figures_dir)
 

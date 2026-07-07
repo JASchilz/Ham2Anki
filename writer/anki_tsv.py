@@ -19,7 +19,7 @@ class AnkiTSV(object):
 
         return '\n'.join(formatted_questions)
 
-    def write_questions(self, questions, path):
+    def write_questions(self, questions, path, figures_dir=None):
         data = self.format_questions(questions)
 
         with open(path, 'w', encoding='utf-8') as out_file:

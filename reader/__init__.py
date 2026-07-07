@@ -11,3 +11,4 @@ All readers shall:
 """
 
 from .ncev_txt import NCEVTxt
+from .ncev_docx import NCEVDocx

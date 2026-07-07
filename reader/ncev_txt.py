@@ -30,7 +30,14 @@ class NCEVTxt(object):
     def extract_questions(cls, path):
 
         with open(path, 'r', encoding="utf-8") as data_file:
-            questions = data_file.read().split('\n\n')
+            text = data_file.read()
+
+        return cls.extract_from_text(text)
+
+    @classmethod
+    def extract_from_text(cls, text):
+
+        questions = text.split('\n\n')
 
         possible_but_rejected = list(
                 filter(
